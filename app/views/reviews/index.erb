@@ -1,0 +1,70 @@
+ <section id="reviews_summary">
+
+    <div class="row">
+    <div class="my-reviews-column col-lg-4">
+        <div class="card">
+        <div class="card-header">
+            Hello, <%= @current_user.username %>. Here are your reviews:
+        </div><!-- end card-header-->
+        
+        <div class="card-body">
+            <% @current_user.reviews.reverse.each do |review| %> 
+            <a href="/reviews/<%= review.id  %>" ><%= Movie.find_by(id: review.movie_id).title %></a> 
+            <br>
+            <% end %>
+        </div><!-- end card-body-->
+        </div><!--end card -->
+    </div> <!-- end my-reviews-column-->
+
+    <div class="others-reviews-column col-lg-4">  
+        <div class="card">
+        <div class="card-header">
+            Recent reviews by others:
+        </div> <!-- end card-header-->
+
+        <div class="card-body">
+            <% @last5_reviews.each do |r|    %>  
+                <% critic = User.find_by(id: Review.find_by(id: r.id).user_id).username %>
+                <a href="/reviews/<%= r.id %>" ><%= Movie.find_by(id: r.movie_id).title %></a> - <%= critic %>
+                <br>
+            <% end %>
+         </div><!-- end card-body-->
+         </div><!-- end card-->
+    </div> <!-- end my-review-column-->
+
+    <div class="most-reviewed-column col-lg-4">
+    <div class="card">
+        <div class="card-header">
+            Most reviewed movies:
+        </div><!--end card-header-->
+
+        <div class="card-body">
+            <!-- format [movie_id, count] -->
+            <% @top3_movies.each_with_index do |m, index|    %>  
+                <a href="/movies/<%= Movie.find_by(id: m.first).slug %>" ><%= Movie.find_by(id: m.first).title %></a> - <%= m[1] %> reviews 
+                <br>
+                <% end %>
+                <br>
+        </div><!--end card-body-->
+        </div><!-- end card-->
+    </div> <!-- end most-review-column-->
+</div> <!--end row-->
+ 
+<br>
+<br>
+
+<div class="container">
+<div class="row">
+   <div class="col text-center">
+   <a href="/movies/search"><button type="button" class="btn btn-dark btn-lg"><i class="fas fa-search"></i> Search for a Movie</button></a>
+     </div>
+</div>
+</div>
+</div> <!-- end row -->
+
+</section>
+
+ 
+ 
+ 
+

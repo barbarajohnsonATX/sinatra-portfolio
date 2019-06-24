@@ -1,0 +1,67 @@
+.welcome {
+    font-family: 'Impact', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.message {
+    color: red;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+
+ .movie-column .card-header,
+ .critics-column .card-header,
+ .account-info .card-header,
+ .my-reviews-column .card-header,
+ .others-reviews-column .card-header,
+ .most-reviewed-column .card-header {
+    background-color: #7BABA2;
+    text-align: center;
+ }
+
+ .movie-column .card-body,
+ .critics-column .card-body,
+ .account-info .card-body,
+ .my-reviews-column .card-body,
+ .others-reviews-column .card-body,
+ .most-reviewed-column .card-body,
+ .movie-column .card-img-top {
+    background-color: #F3F4E4;
+ }
+
+ img {
+    max-width: 50%;
+    height: auto;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white ;
+}
+
+.account-info {
+    margin: 0 auto; 
+    float: none;  
+    margin-bottom: 10px;  
+}
+
+ 
+
+
+.container {
+    padding: 5% 1%;
+
+}
+.social-icon {
+    margin: 20px 10px;
+    color: #381D0A;
+  }
+ 
+
+.btn {
+    margin: 5% 3% 5% 0;
+    background-color: #44424D;
+}

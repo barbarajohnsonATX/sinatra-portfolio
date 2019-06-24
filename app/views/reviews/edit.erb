@@ -1,0 +1,22 @@
+<h3>Edit the Review </h3>
+ 
+<form action="/reviews/<%=@review.id%>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+
+<p>Critic: <%= @user.username %></p>
+
+<label>Review: </label>
+<!-- <input type="text" name="review_content" id="review_content" value="<%= @review.review_content %>" > -->
+<textarea id="review_content"  name="review_content" value="<%= @review.review_content %>" rows="5" cols="50"></textarea><br></br>
+
+
+<label>Rating: </label>
+<input type="text" name="star_rating" id="star_rating" value="<%= @review.star_rating %>" >
+    
+<br>
+<br>
+
+<input class="btn btn-secondary" type="submit" value="Submit">
+
+</form>
+

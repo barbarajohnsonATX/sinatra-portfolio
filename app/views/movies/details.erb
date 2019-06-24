@@ -1,0 +1,22 @@
+<h3><%= @details["Title"] %> </h3>
+
+<p>Plot: <%= @details["Plot"] %></p>
+<p>Actors: <%= @details["Actors"] %></p>
+<p>Released: <%= @details["Released"] %></p>
+<p>Runtime: <%= @details["Runtime"] %></p>
+<p>Rated: <%= @details["Rated"] %></p>
+<p>Genre: <%= @details["Genre"] %></p>
+
+<% if !@details["Ratings"].empty? %>
+<% @details["Ratings"].each do |rating| %>
+    <p><%= rating["Source"] %>: <%= rating["Value"] %></p>
+    <% end %>
+<% end %>
+
+
+ 
+<img src="<%= @details["Poster"] %>" alt="movie poster">
+
+
+   
+

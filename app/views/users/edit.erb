@@ -1,0 +1,51 @@
+   	<h1>Edit User : <%= @user.username %></h1>
+	<form action="/users/<%= @user.slug %>" method="POST">
+		<input id="hidden" type="hidden" name="_method" value="patch">
+		 
+			<label>Username: </label>
+			<input type="text" name="username" id="username" value="<%=@user.username%>" class="form-control">
+            <br>
+            <br>
+
+		 
+			<label>Email: </label>
+			<input type="text" name="email" id="email" value="<%=@user.email%>" class="form-control">
+            <br>
+            <br>
+
+        
+ 			<label>Current Password: </label>
+			<input type="password" name="password" id="password" class="form-control" placeholder="Required">
+            <br>
+            <br>
+
+            <label>New Password: </label>
+			<input type="password" name="new_password" id="password" class="form-control" placeholder="Optional">
+            <br>
+            <br>
+
+ 			<label>New Password Confirmation: </label>
+			<input type="password" name="new_password_confirmation" id="password" class="form-control" placeholder="Required only if new password is entered">
+            <br>
+            <br>
+
+       <!-- <button type="submit" value="Submit">Update Info</button>-->
+    
+        <div class="container">
+        <div class="row">
+           <div class="col text-center">
+           <button type="submit" class="btn btn-dark btn-lg"><i class="fas fa-user-edit"></i> Submit Changes</button></a>
+             </div>
+        </div>
+        </div>
+
+        </form>
+    </br>
+
+<!--
+	<form method="post" action="/users/<%=@user.id%>"  >
+ 		<input id="hidden" type="hidden" name="_method" value="delete">
+ 		<input class="btn btn-secondary" type="submit" value="Delete User" class="form-control">
+     </form>
+ -->
+ 

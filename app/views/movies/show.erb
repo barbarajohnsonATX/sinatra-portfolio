@@ -1,0 +1,43 @@
+<section id="movie_and_reviews">
+
+    <div class="row">
+        <div class="movie-column col-lg-6">
+
+            <div class="card">
+
+            <div class="card-header">
+                <%= @movie.title %>
+            </div>
+
+            <img class="card-img-top mx-auto text-center" src="<%= @movie.poster_url %>" alt="Card image cap">
+ 
+                <div class="card-body">
+                    <p><%= @movie.plot %></p>
+                    <p>Actors: <%= @movie.actors %></p>
+                    <p>Released: <%= @movie.released %></p>
+                    <p>Runtime: <%= @movie.runtime %></p>
+                    <p>Rated: <%= @movie.rated %></p>
+                    <p>Genre: <%= @movie.genre %></p>
+                   <!-- <img src="<%= @movie.poster_url %>" alt="movie poster"> -->
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div> <!-- end movie-column -->
+
+        <div class="critics-column col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    Reviews
+                </div>
+
+                <div class="card-body">
+                    <% @movie.reviews.each do |m| %>
+                    <p>Critic: <%= User.find(m.user_id).username %></p>
+                    <p>Review: <%= m.review_content %> </p>
+                    <p>Rating: <%= m.star_rating %> </p>
+                    <br>
+                    <% end %>
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div> <!--end critics-column-->
+    </div> <!-- end row -->
+</section>

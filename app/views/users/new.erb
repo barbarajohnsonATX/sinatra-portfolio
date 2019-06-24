@@ -1,0 +1,42 @@
+<h3>Sign Up</h3>
+
+<% if flash.has?(:signup_error) %>
+  <%= flash[:signup_error] %>
+<% end %>
+
+<form action="/signup" method="POST">
+
+  <div class="form-group">
+  <label for="username">Username</label>
+  <input type="text" name="username" class="form-control" id="username"  placeholder="Enter user name">
+</div>
+
+<div class="form-group">
+<label for="email">Email</label>
+<input type="text" name="email" class="form-control" id="username"  placeholder="Enter email">
+</div>
+
+<div class="form-group">
+  <label for="password">Password</label>
+  <input type="password" name="password" class="form-control" id="password"  placeholder="Enter password">
+</div>
+
+
+
+  <!--<input type="submit" name="submit" value="Sign Up"> -->
+  <div class="container">
+  <div class="row">
+      <div class="col text-center">
+        <button type="submit" class="btn btn-dark btn-lg"><i class="fas fa-user-plus"></i> Sign Up</button></a>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+    <a href="/login"><button type="submit" class="btn btn-dark btn-lg"><i class="fas fa-sign-in-alt"></i> Login</button></a>
+  </div>
+  </div>
+   </div>
+
+
+  </form>
+

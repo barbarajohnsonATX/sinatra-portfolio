@@ -1,0 +1,37 @@
+<h3>Search results</h3>
+
+<form method="POST" action="/movies/results">
+
+
+<% @movies.each do |movie| %>
+    <div class="form-check">
+    <% id = movie["imdbID"] %>
+
+    <input class="form-check-input" type="radio" name="imdbID" id="imdbID" value="<%= id %>">
+    <label class="form-check-label" for="imdbID">
+    <a href="/movies/imdb/<%= id %>" ><%= movie["Title"] %></a> 
+
+    Year: <%= movie["Year"] %><br>    </label>
+  </div>
+<% end %>
+<br>
+<br>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <!--<a href="/reviews"><button type="button" class="btn btn-dark btn-lg"><i class="fas fa-list-alt"></i> Summary</button></a>-->
+      <button type="submit" class="btn btn-dark btn-lg"><i class="fas fa-comment-dots"></i> Review</button></a>
+      <a href="/movies/search"><button type="button" class="btn btn-dark btn-lg"><i class="fas fa-search"></i> Search Again</button></a>
+
+      </div>
+
+
+  </div>
+
+</div>
+
+</form>
+
+ 

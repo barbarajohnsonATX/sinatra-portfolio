@@ -1,0 +1,35 @@
+<% if flash.has?(:error) %>
+<%= flash[:error] %>
+<% end %>
+
+<h3>Create a Review for <%= @new_movie.title %></h3>
+
+
+<form action="/reviews/new" method="POST">
+
+<input type="hidden" name="movie_id" value="<%= @new_movie.id %>"> 
+
+<div class="form-group">
+<label for="review_content">Comment</label><br>
+<textarea id="review_content"  name="review_content" placeholder="Enter review" rows="5" cols="50"></textarea><br></br>
+</div>
+
+<div class="form-group">
+<label for="star_rating">Rating</label>
+<input type="text" name="star_rating" placeholder="Rating">
+</div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <button type="submit" class="btn btn-dark btn-lg">Submit</button></a>
+      </div>
+    </div>
+  </div>
+
+  </form>
+
+ 
+
+ 

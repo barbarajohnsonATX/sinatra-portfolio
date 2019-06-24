@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="account-info col-lg-8">
+            <div class="card">
+                <div class="card-header">Account Info</div>
+                    
+
+                <div class="card-body">
+                    <p>Username: <%= @user.username %></p>
+                    <p>Email: <%= @user.email%></p>
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div> <!-- end account-info -->
+    </div> <!-- end row -->
+</div>
+
+<div class="container">
+<div class="row">
+   <div class="col text-center">
+   <a href="/users/<%= @user.slug %>/edit"><button type="button" class="btn btn-dark btn-lg"><i class="fas fa-user-edit"></i> Edit Account</button></a>
+     </div>
+</div>
+</div>

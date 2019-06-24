@@ -1,0 +1,31 @@
+ <h3>Review for <a href="/movies/<%= @movie.slug%>">  <%= @movie.title %> </a> </h3> 
+ 
+ 
+
+<p>Critic: <%= @critic.username %></p>
+<p>Review: <%= @review.review_content %></p>
+<p>Rating: <%= @review.star_rating %></p>
+<br>
+<br>
+
+  
+<form method="post" action="/reviews/<%=@review.id%>"  >
+<input id="hidden" type="hidden" name="_method" value="delete">
+
+
+<div class="container">
+<div class="row">
+   <div class="col text-center">
+
+   <a href="/reviews/<%=@review.id%>/edit"><button type="button" class="btn btn-dark btn-lg"><i class="fas fa-user-edit"></i> Edit</button></a>
+
+   <button type="submit" class="btn btn-dark btn-lg"><i class="fas fa-trash-alt"></i> Delete</button></a>
+     </div>
+</div>
+</div>
+
+
+
+
+</form>
+
