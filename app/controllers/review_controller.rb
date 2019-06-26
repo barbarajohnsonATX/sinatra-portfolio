@@ -88,7 +88,13 @@ class ReviewController < ApplicationController
     end 
 
     def recent_reviews_by_others(user, n)
-        Review.where.not(user_id: user.id).reverse.first(n)
+        #Review.where.not(user_id: user.id).reverse.first(n)
+        #binding.pry
+        sort = Review.where.not(user_id: user.id).sort_by &:updated_at 
+        sort.reverse.first(n)
+
+ 
+
     end 
 
     def most_reviewed_movies(n)

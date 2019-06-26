@@ -8,7 +8,10 @@
         </div><!-- end card-header-->
         
         <div class="card-body">
-            <% @current_user.reviews.reverse.each do |review| %> 
+            <% sort = @current_user.reviews.sort_by(&:updated_at) %>
+            <% sort.reverse.each do |review|  %> 
+
+    
             <a href="/reviews/<%= review.id  %>" ><%= Movie.find_by(id: review.movie_id).title %></a> 
             <br>
             <% end %>

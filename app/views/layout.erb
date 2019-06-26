@@ -35,7 +35,12 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     
    <a class="navbar-brand"</a>
-   <a href="/reviews"><img src="/images/logo.png" alt="IMnotDB logo"></a>
+   <% if logged_in?(session) %>
+      <a href="/reviews"><img src="/images/logo.png" alt="IMnotDB logo"></a>
+    <% else %>
+      <a href="/"><img src="/images/logo.png" alt="IMnotDB logo"></a>
+    <% end %>
+
    <h1 class="welcome">Movie Reviews</h1>
 
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
