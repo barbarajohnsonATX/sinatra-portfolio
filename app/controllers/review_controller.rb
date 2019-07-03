@@ -35,6 +35,7 @@ class ReviewController < ApplicationController
             @review = Review.find_by(id: params[:id])
             @movie = @review.movie 
             @critic = @review.user 
+            @user =  current_user(session)
             # @movie = Movie.find_by(id: @review.movie_id)
             # @critic = User.find_by(id: @review.user_id)
 
