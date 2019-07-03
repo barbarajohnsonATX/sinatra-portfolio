@@ -8,13 +8,15 @@
         </div><!-- end card-header-->
         
         <div class="card-body">
-            <% sort = @current_user.reviews.sort_by(&:updated_at) %>
-            <% sort.reverse.each do |review|  %> 
+ 
 
-    
-            <a href="/reviews/<%= review.id  %>" ><%= Movie.find_by(id: review.movie_id).title %></a> 
-            <br>
-            <% end %>
+         <% @sorted_reviews.each do |review|  %> 
+
+        <a href="/reviews/<%= review.id  %>" ><%= review.movie.title %></a> 
+        <br>
+        <% end %>
+
+
         </div><!-- end card-body-->
         </div><!--end card -->
     </div> <!-- end my-reviews-column-->
@@ -30,9 +32,9 @@
                 <% critic = User.find_by(id: Review.find_by(id: r.id).user_id).username %>
                 <a href="/reviews/<%= r.id %>" ><%= r.movie.title %></a> - <%= r.user.username %>
 
-               <!-- <a href="/reviews/<%= r.id %>" ><%= Movie.find_by(id: r.movie_id).title %></a> - <%= critic %> -->
-                <br>
+                 <br>
             <% end %>
+            
          </div><!-- end card-body-->
          </div><!-- end card-->
     </div> <!-- end my-review-column-->
@@ -44,12 +46,15 @@
         </div><!--end card-header-->
 
         <div class="card-body">
-            <!-- format [movie_id, count] -->
-            <% @top3_movies.each_with_index do |m, index|    %>  
-                <a href="/movies/<%= Movie.find_by(id: m.first).slug %>" ><%= Movie.find_by(id: m.first).title %></a> - <%= m[1] %> reviews 
-                <br>
-                <% end %>
-                <br>
+       
+
+            <% @top3_movies.each do |m|  %>  
+                  <a href="/movies/<%= m.slug %>" ><%= m.title %></a> - <%= m.reviews.count %> reviews 
+                 <br>
+                 <% end %>
+            <br>
+
+
         </div><!--end card-body-->
         </div><!-- end card-->
     </div> <!-- end most-review-column-->

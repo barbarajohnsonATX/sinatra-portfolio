@@ -3,6 +3,7 @@ class ReviewController < ApplicationController
     get '/reviews' do 
         if logged_in?(session)
             @current_user = current_user(session)
+            @sorted_reviews = sorted
             @last5_reviews = recent_reviews_by_others(@current_user, 5)
             @top3_movies = most_reviewed_movies(3)
             erb :'reviews/index'
@@ -99,14 +100,20 @@ class ReviewController < ApplicationController
         end
     end 
 
+    def sorted 
+        #@current_user = current_user(session)
+        sort = current_user(session).reviews.sort_by(&:updated_at).reverse
+        #binding.pry 
+        # sort.reverse.each do |review|  
+        #     Movie.find_by(id: review.movie_id).title 
+        # end
+    end 
+
     def recent_reviews_by_others(user, n)
         #Review.where.not(user_id: user.id).reverse.first(n)
         #binding.pry
         sort = Review.where.not(user_id: user.id).sort_by &:updated_at 
         sort.reverse.first(n)
-
- 
-
     end 
 
     def most_reviewed_movies(n)
@@ -122,6 +129,12 @@ class ReviewController < ApplicationController
         # sort.first(n)
 
         counts = Review.group(:movie_id).count.sort_by {|_key, value| value}.reverse.first(n)
+        most_reviewed_movies = counts.map do |movie|
+            Movie.find(movie[0])
+        end 
+        
+        most_reviewed_movies
+
     end 
         
 
