@@ -33,8 +33,10 @@ class ReviewController < ApplicationController
     get '/reviews/:id' do 
         
             @review = Review.find_by(id: params[:id])
-            @movie = Movie.find_by(id: @review.movie_id)
-            @critic = User.find_by(id: @review.user_id)
+            @movie = @review.movie 
+            @critic = @review.user 
+            # @movie = Movie.find_by(id: @review.movie_id)
+            # @critic = User.find_by(id: @review.user_id)
 
             erb :'reviews/show'
     end 
@@ -57,10 +59,19 @@ class ReviewController < ApplicationController
       end
 
       patch "/reviews/:id" do
+        @user =  current_user(session)
+
+        @review = Review.find_by(id: params[:id])
+        if @review.user_id != @user.id
+            flash[:message] = "Only the user who entered this review is allowed to update it."
+            redirect '/reviews'
+        end
+
+
         if params[:review_content].empty? || params[:star_rating].empty?    
              redirect "/reviews/#{params[:id]}/edit"
         else
-            @review = Review.find_by(id: params[:id])
+           # @review = Review.find_by(id: params[:id])
             @review.review_content = params[:review_content]
             @review.star_rating = params[:star_rating]
             @review.save
