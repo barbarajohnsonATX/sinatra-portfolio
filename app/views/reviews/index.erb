@@ -29,12 +29,11 @@
 
         <div class="card-body">
             <% @last5_reviews.each do |r|    %>  
-                <% critic = User.find_by(id: Review.find_by(id: r.id).user_id).username %>
                 <a href="/reviews/<%= r.id %>" ><%= r.movie.title %></a> - <%= r.user.username %>
 
                  <br>
             <% end %>
-            
+
          </div><!-- end card-body-->
          </div><!-- end card-->
     </div> <!-- end my-review-column-->
